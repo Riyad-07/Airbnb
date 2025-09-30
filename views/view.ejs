@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View List</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+        <div class="card">
+            <h3>  <%= list.title %>  </h3>
+            <img src="<%= list.image.url %>" alt="">
+            <p class=""><%= list.description %></p>
+            <p>&#2547; <%= list.price.toLocaleString("en-BD") %></p>
+            <div class="location">
+                <p> <%= list.location %></p>
+                <p> <%= list.country %></p>
+            </div>
+        </div>
+        <a href="/">Back to List</a>
+  </body>
+</html>

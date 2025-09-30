@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Listing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>All Listing</h2>
+    <div><a href="/add">Add List</a></div>
+    <% for( let list of alllist )  { %>
+        <div class="card">
+            <h3> <a href="/<%= list._id %>/view"> <%= list.title %> </a> </h3>
+            <img src="<%= list.image %>" alt="">
+            <p class="description"><%= list.description %></p>
+            <p>&#2547; <%= list.price.toLocaleString("en-BD") %></p>
+            <div class="location">
+                <p> <%= list.location %></p>
+                <p> <%= list.country %></p>
+            </div>
+            <form action="/<%= list._id %>/edit" method="">
+                <button>Edit</button>
+            </form>
+            <form action="/<%= list._id %>/?_method=DELETE" method="post">
+                <button>Delete</button>
+            </form>
+        </div>
+    <% } %>
+</body>
+</html>
