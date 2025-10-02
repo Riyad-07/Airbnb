@@ -1,5 +1,5 @@
 {
-  "name": "airbnb",
+  "name": "testairbnb",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -12,9 +12,10 @@
   "description": "",
   "dependencies": {
     "ejs": "^3.1.10",
+    "ejs-mate": "^4.0.0",
     "express": "^5.1.0",
     "method-override": "^3.0.0",
-    "mongoose": "^8.18.2",
+    "mongoose": "^8.18.3",
     "nodemon": "^3.1.10"
   }
 }

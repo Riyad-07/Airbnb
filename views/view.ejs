@@ -1,22 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>View List</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
+<% layout("/layout/boilerplate.ejs") %>
+
   <body>
-        <div class="card">
+    <h2 class="mt-3">List Details</h2>
+
+    <div class="card mt-3 col-md-8 offset-md-2"  style="">
+      <img src="<%= list.image %>" class="card-img-top" alt="..." style="height: 30rem;">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= list.title %>
+        </h5>
+        <p class="card-text">
+          <%= list.description %>
+        </p>        
+        <p class="card-price">&#2547; <%= list.price.toLocaleString("en-BD") %> / per night</p>
+        <div class="view-price">
+          <p class="card-text">
+          <%= list.location %>
+        </p>
+        <p><%= list.country %></p>
+        </div>
+      </div>
+
+      <div class="">
+        <form style="display: inline-block;"  action="/<%= list._id %>/edit" method="">
+          <button class="btn btn-success">Edit</button>
+        </form>
+        <form style="display: inline-block; margin-left: 20px;" action="/<%= list._id %>/?_method=DELETE" method="post">
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+      <a href="/">Back to List</a>
+    </div>
+
+
+
+
+
+    <!-- <div class="card">
             <h3>  <%= list.title %>  </h3>
-            <img src="<%= list.image.url %>" alt="">
+            <img src="<%= list.image %>" alt="">
             <p class=""><%= list.description %></p>
-            <p>&#2547; <%= list.price.toLocaleString("en-BD") %></p>
+            <p>&#2547; <%= list.price.toLocaleString("en-BD") %> / per night</p>
             <div class="location">
                 <p> <%= list.location %></p>
                 <p> <%= list.country %></p>
             </div>
-        </div>
-        <a href="/">Back to List</a>
+        </div> -->
+
   </body>
-</html>

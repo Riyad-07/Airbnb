@@ -1,31 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Listing</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h2>All Listing</h2>
-    <div><a href="/add">Add List</a></div>
-    <% for( let list of alllist )  { %>
-        <div class="card">
-            <h3> <a href="/<%= list._id %>/view"> <%= list.title %> </a> </h3>
-            <img src="<%= list.image %>" alt="">
-            <p class="description"><%= list.description %></p>
-            <p>&#2547; <%= list.price.toLocaleString("en-BD") %></p>
-            <div class="location">
-                <p> <%= list.location %></p>
-                <p> <%= list.country %></p>
-            </div>
-            <form action="/<%= list._id %>/edit" method="">
-                <button>Edit</button>
-            </form>
-            <form action="/<%= list._id %>/?_method=DELETE" method="post">
-                <button>Delete</button>
-            </form>
+<% layout("/layout/boilerplate.ejs") %>
+
+    <body>
+        <h2 class="mt-3 mb-4">All Listing</h2>
+        <div class="home-card">
+            <% for( let list of alllist ) { %>
+                <div class="card" style="width: 18rem;"> 
+                    <img src="<%= list.image %>" class="card-img-top" alt="..." style="height: 20rem;">
+                    <div class="card-body cb-home">
+                        <h5 class="card-title"><%= list.title %></h5>
+                        <p class="card-text-home"> <%= list.description %></p>
+                        <p class="card-price">&#2547;  <%= list.price.toLocaleString("en-BD") %> / per night</p>
+                        <a href="/<%= list._id %>/view" class="btn btn-primary">View Full Details</a>
+                    </div>
+                </div>
+            <% } %>
         </div>
-    <% } %>
-</body>
-</html>
+    </body>
