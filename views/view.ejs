@@ -3,7 +3,7 @@
   <body>
     <h2 class="mt-3">List Details</h2>
 
-    <div class="card mt-3 col-md-8 offset-md-2"  style="">
+    <div class="card mt-3 col-md-8 offset-md-2" style="">
       <img src="<%= list.image %>" class="card-img-top" alt="..." style="height: 30rem;">
       <div class="card-body">
         <h5 class="card-title">
@@ -11,24 +11,62 @@
         </h5>
         <p class="card-text">
           <%= list.description %>
-        </p>        
+        </p>
         <p class="card-price">&#2547; <%= list.price.toLocaleString("en-BD") %> / per night</p>
         <div class="view-price">
           <p class="card-text">
-          <%= list.location %>
-        </p>
-        <p><%= list.country %></p>
+            <%= list.location %>
+          </p>
+          <p>
+            <%= list.country %>
+          </p>
         </div>
       </div>
 
       <div class="">
-        <form style="display: inline-block;"  action="/<%= list._id %>/edit" method="">
+        <form style="display: inline-block;" action="/<%= list._id %>/edit" method="">
           <button class="btn btn-success">Edit</button>
         </form>
         <form style="display: inline-block; margin-left: 20px;" action="/<%= list._id %>/?_method=DELETE" method="post">
           <button class="btn btn-danger">Delete</button>
         </form>
       </div>
+      <hr>
+      <div class="show-review">
+        <h3>All Reviews</h3>
+        <div class="row ">
+          <% for( review of list.reviews ) { %>
+            <div class="card border col-5 ms-3 mb-3">
+              <div class="card-body">
+                <p class="card-text">
+                  <%= review.comment %>, &nbsp; <%= review.rating %>
+                </p>
+                <form action="/<%= list._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
+                  <button class="btn btn-danger">delete</button>
+                </form>
+              </div>
+            </div>
+            <% } %>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <h3>Share You Expreience</h3>
+        <form class="needs-validation" novalidate action="/<%= list._id %>/reviews" method="post">
+          <div>
+            <label for="rating" class="form-label">Rating</label>
+            <input class="form-range" name="review[rating]" id="review" type="range" min="1" max="5">
+          </div>
+          <div>
+            <label class="form-label" for="comment">Comment</label>
+            <textarea class="form-control" name="review[comment]" id="comment" required></textarea>
+            <div class="invalid-feedback">Please Submit comment for review</div>
+          </div>
+          <button class="btn btn-outline-dark mt-3">Submit</button>
+        </form>
+      </div>
+
+
       <a href="/">Back to List</a>
     </div>
 
