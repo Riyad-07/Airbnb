@@ -2,6 +2,7 @@
 
   <body>
     <h2 class="mt-3">List Details</h2>
+    <p class="text-center">Created By: <b> <%= list.owner.username %> </b> </p>
 
     <div class="card mt-3 col-md-8 offset-md-2">
       <img src="<%= list.image %>" class="card-img-top" alt="..." style="height: 30rem;">
@@ -23,6 +24,9 @@
         </div>
       </div>
 
+      <!-- only owner can show edit & delete button -->
+      <% if (curUser && curUser._id.equals(list.owner._id)) { %> <% } %>
+      <!-- only owner can show edit & delete button -->
       <div class="">
         <form style="display: inline-block;" action="/<%= list._id %>/edit" method="">
           <button class="btn btn-success">Edit</button>
@@ -30,7 +34,8 @@
         <form style="display: inline-block; margin-left: 20px;" action="/<%= list._id %>/?_method=DELETE" method="post">
           <button class="btn btn-danger">Delete</button>
         </form>
-      </div>
+      </div>      
+      
       <hr>
       <div class="show-review">
         <h3>All Reviews</h3>
