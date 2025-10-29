@@ -49,7 +49,7 @@ router.put("/:id", isLogedIn, isOwner, validatedListing, wrapAsync(async (req, r
 
 router.get("/:id/view", wrapAsync(async (req, res) => {
     let { id } = req.params
-    let list = await Listing.findById(id).populate("reviews").populate("owner");
+    let list = await Listing.findById(id).populate( {path:"reviews", populate:{path: "author"} }).populate("owner");
     if(!list){
         req.flash("error", "This list Not Found");
         return res.redirect("/")

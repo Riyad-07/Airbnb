@@ -43,6 +43,7 @@
           <% for( review of list.reviews ) { %>
             <div class="card border col-5 ms-3 mb-3">
               <div class="card-body">
+                <h4><%= review.author.username %></h4>
                 <p class="card-text">
                   <%= review.comment %>, &nbsp; <%= review.rating %>
                 </p>
@@ -54,8 +55,9 @@
             <% } %>
         </div>
       </div>
-      <hr>
       <div>
+        <% if (curUser) { %>
+          <hr>
         <h3>Share You Expreience</h3>
         <form class="needs-validation" novalidate action="/<%= list._id %>/reviews" method="post">
           <div>
@@ -69,6 +71,7 @@
           </div>
           <button class="btn btn-outline-dark mt-3">Submit</button>
         </form>
+        <% } %>
       </div>
 
 
