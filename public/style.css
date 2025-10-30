@@ -73,6 +73,10 @@ a{
 }
 .card{
     border: none !important;
+    border-radius: 1rem !important;
+}
+.card:hover{    
+    box-shadow: 20xp 20px 50px rgb(73, 13, 13) !important;
 }
 
 .card-img-top{

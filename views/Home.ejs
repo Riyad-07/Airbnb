@@ -2,9 +2,9 @@
 
     <body>
         <h2 class="mt-3 mb-4">All Listing</h2>
-        <div class="home-card">
+        <div class="home-card pb-5">
             <% for( let list of alllist ) { %>
-                <div class="card" style="width: 18rem;"> 
+                <div class="card border shadow" style="width: 18rem;"> 
                     <img src="<%= list.image %>" class="card-img-top" alt="..." style="height: 20rem;">
                     <div class="card-body cb-home">
                         <h5 class="card-title"><%= list.title %></h5>
