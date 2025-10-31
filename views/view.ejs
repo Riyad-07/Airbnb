@@ -7,7 +7,7 @@
       </b> </p>
 
     <div class="card mt-3 col-md-8 offset-md-2">
-      <img src="<%= list.image %>" class="card-img-top" alt="..." style="height: 30rem;">
+      <img src="<%= list.image.url %>" class="card-img-top" alt="..." style="height: 30rem;">
       <div class="card-body">
         <h5 class="card-title">
           <%= list.title %>
@@ -28,7 +28,7 @@
 
       <!-- only owner can show edit & delete button -->
       <% if (curUser && curUser._id.equals(list.owner._id)) { %>
-        <% } %>
+        
           <!-- only owner can show edit & delete button -->
           <div class="">
             <form style="display: inline-block;" action="/<%= list._id %>/edit" method="">
@@ -39,7 +39,7 @@
               <button class="btn btn-danger">Delete</button>
             </form>
           </div>
-
+          <% } %>
           <hr>
           <div class="show-review">
             <h3>All Reviews</h3>
@@ -98,7 +98,7 @@
           </div>
 
 
-          <a href="/">Back to List</a>
+          <a class="btn btn-primary mb-4" href="/">Back to List</a>
     </div>
 
 

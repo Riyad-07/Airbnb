@@ -16,15 +16,13 @@ router.get("/add", isLogedIn, (req, res) => {
     res.render("add.ejs")
 })
 
-// router.post("/add", isLogedIn, validatedListing, wrapAsync(allListingController.addListing))
-router.post("/add", upload.single('listing[image]'), (req, res) => {    
-    res.send(req.file)
-})
+router.post("/add", isLogedIn, validatedListing, upload.single('listing[image]'), wrapAsync(allListingController.addListing))
+
 
 // --------------------------------------------------------------------------------------------------> edit route
 router.get("/:id/edit", isLogedIn, isOwner, wrapAsync(allListingController.editListing))
 
-router.put("/:id", isLogedIn, isOwner, validatedListing, wrapAsync(allListingController.updateEditListing))
+router.put("/:id", isLogedIn, isOwner, upload.single('listing[image]'), validatedListing, wrapAsync(allListingController.updateEditListing))
 
 // ------------------------------------------------------------------------------------------------------------------> View Route
 

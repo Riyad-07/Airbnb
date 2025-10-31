@@ -5,7 +5,7 @@
         <div class="home-card pb-5">
             <% for( let list of alllist ) { %>
                 <div class="card border shadow" style="width: 18rem;"> 
-                    <img src="<%= list.image %>" class="card-img-top" alt="..." style="height: 20rem;">
+                    <img src="<%= list.image.url %>" class="card-img-top" alt="..." style="height: 20rem;">
                     <div class="card-body cb-home">
                         <h5 class="card-title"><%= list.title %></h5>
                         <p class="card-text-home"> <%= list.description %></p>
