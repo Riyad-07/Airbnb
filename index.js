@@ -10,6 +10,7 @@ const methodOverride = require('method-override');
 const ejsMate = require("ejs-mate");
 const ExpressError = require('./util/ExpressError');
 const session = require("express-session");
+const MongoStore = require('connect-mongo');
 const flash = require("connect-flash")
 const passport = require("passport");
 const LocalStragegy = require("passport-local");
@@ -39,7 +40,21 @@ async function main() {
     await mongoose.connect(dbUrl);
 }
 
+
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto: {
+        secret: "mysecretcode",
+    },
+    touchAfter: 24*3600
+})
+
+store.on("error", () => {
+    console.log("Error found in mongo session " + err);    
+})
+
 const sessionOption = {
+    store,
     secret: "mysecretcode",
     resave: false,
     saveUninitialized: true, 
@@ -49,6 +64,7 @@ const sessionOption = {
         httpOnly: true,
     }
 }
+
 
 // ------------------------------> Session
 
