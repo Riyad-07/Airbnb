@@ -3,14 +3,17 @@ const Listing = require('../modals/listing');
 const initData  = require("./data")
 
 
-main().then(()=> {
-    console.log("Database Connect..........");    
-})
-.catch(err => console.log(err));
+
+const dbUrl = process.env.MONGODB_URL;
+
+main().then(() => {
+    console.log("Database Connect..........");
+}).catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/airbnb');
+    await mongoose.connect(dbUrl);
 }
+
 
 const insertData =  async() => {
     await Listing.deleteMany({});

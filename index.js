@@ -29,14 +29,14 @@ app.use(methodOverride('_method'));
 app.use(express.json())
 
 
-
+const dbUrl = process.env.MONGODB_URL;
 
 main().then(() => {
     console.log("Database Connect..........");
 }).catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/airbnb');
+    await mongoose.connect(dbUrl);
 }
 
 const sessionOption = {
