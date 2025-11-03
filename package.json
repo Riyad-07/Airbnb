@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "22.17.1"
+  },
   "name": "testairbnb",
   "version": "1.0.0",
   "main": "index.js",
