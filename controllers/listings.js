@@ -5,7 +5,7 @@ const Listing = require("../modals/listing");
 
 module.exports.homeListing = async (req, res) => {
     const alllist = await Listing.find()
-    res.render("home.ejs", { alllist });
+    res.render("Home.ejs", { alllist });
 }
 
 
