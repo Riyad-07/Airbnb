@@ -6,6 +6,9 @@ body{
 .container{
     flex: 1;
 }
+a{
+    text-decoration: none;
+}
 /* .card{
     width: 300px;
     padding: 20px;
@@ -88,7 +91,17 @@ a{
     height: 230px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 2px;
+    padding: 0 !important;
+    margin-top: 12px;
+}
+
+.cb-home .card-title, .cb-home .card-text-home{
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
 }
 
 /* ------------------------------------------------------> form */

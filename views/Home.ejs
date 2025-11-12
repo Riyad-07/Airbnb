@@ -1,18 +1,25 @@
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
 <% layout("/layout/boilerplate.ejs") %>
 
     <body>
         <h2 class="mt-3 mb-4">All Listing</h2>
         <div class="home-card pb-5">
             <% for( let list of alllist ) { %>
-                <div class="card border shadow" style="width: 18rem;"> 
+                <a href="/<%= list._id %>/view" class="">
+                <div class="card " style="width: 18rem;"> 
                     <img src="<%= list.image.url %>" class="card-img-top" alt="..." style="height: 20rem;">
                     <div class="card-body cb-home">
                         <h5 class="card-title"><%= list.title %></h5>
                         <p class="card-text-home"> <%= list.description %></p>
                         <p class="card-price">&#2547;  <%= list.price.toLocaleString("en-BD") %> / per night</p>
-                        <a href="/<%= list._id %>/view" class="btn btn-primary">View Full Details</a>
+                        
                     </div>
                 </div>
+                </a>
             <% } %>
         </div>
     </body>
