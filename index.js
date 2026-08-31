@@ -32,11 +32,16 @@ app.use(express.json())
 
 const dbUrl = process.env.MONGODB_URL;
 
+if (!dbUrl) {
+    console.error("MONGODB_URL is not defined. Set it in Render environment variables.");
+}
+
 main().then(() => {
     console.log("Database Connect..........");
 }).catch(err => console.log(err));
 
 async function main() {
+    if (!dbUrl) return;
     await mongoose.connect(dbUrl);
 }
 
@@ -118,6 +123,8 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(8080, () => {
-    console.log("Server is running...........");
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}...........`);
 })
