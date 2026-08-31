@@ -12,7 +12,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'similarairbnb_DEV',
-    allowerdFormats: ['jpg', 'jpeg', 'png'],
+    allowedFormats: ['jpg', 'jpeg', 'png'],
   },
 });
 
